@@ -1,6 +1,4 @@
-import {
-  removeChildren,
-} from '../../dom-utils.js';
+import { removeChildren } from '../../dom-utils.js';
 
 class BrowseMembersView {
   constructor() {
@@ -26,25 +24,37 @@ class BrowseMembersView {
 
     this.clearDom();
 
-    /*
-      TODO: 動的にDOM要素を作成して、
-      "#container"というidを持つDIV要素の子要素として追加してください...
-
-        <div class="member-profile">
-          <div class="member-image-box">
-            <img src="" alt="(会員のイメージ)">
-          </div>
-          <h3>名前</h3>
-          <p class="member-name">
-            <!-- 会員の名前、たとえば「じじー」-->
-          </p>
-          <h3>一言</h3>
-          <p class="member-text">
-            <!-- 会員の自己紹介 -->
-          </p>
-        </div>
-        <button class="btn-next-member">次へ</button>
-    */
+    const parent = document.getElementById('container');
+    const child = document.createElement('DIV');
+    child.classList.add('member-profile');
+    const imageBox = document.createElement('class');
+    imageBox.classList.add('member-image-box');
+    const robotThumbEl = document.createElement('IMG');
+    robotThumbEl.src = thumbnailUrl;
+    const nameTitle = document.createElement('H3');
+    nameTitle.innerHTML = '名前';
+    const NamePhraseEl = document.createElement('P');
+    NamePhraseEl.classList.add('member-name');
+    NamePhraseEl.innerHTML = name;
+    const quoteTitle = document.createElement('H3');
+    quoteTitle.innerHTML = '一言';
+    const quotePhraseEl = document.createElement('P');
+    quotePhraseEl.classList.add('member-text');
+    quotePhraseEl.innerHTML = quote;
+    const nextButton = document.createElement('button');
+    nextButton.classList.add('btn-next-member');
+    nextButton.addEventListener('click', () => {
+      handleBrowseNextMember();
+    });
+    nextButton.innerHTML = '次へ';
+    parent.appendChild(child);
+    child.appendChild(imageBox);
+    imageBox.appendChild(robotThumbEl);
+    child.appendChild(nameTitle);
+    child.appendChild(NamePhraseEl);
+    child.appendChild(quoteTitle);
+    child.appendChild(quotePhraseEl);
+    child.appendChild(nextButton);
   }
 }
 
