@@ -57,7 +57,7 @@ class BrowseMembersView {
     child.appendChild(NamePhraseEl);
     child.appendChild(titleQuote);
     child.appendChild(quotePhraseEl);
-    child.appendChild(nextButton);
+    parent.appendChild(nextButton);
   }
 }
 
