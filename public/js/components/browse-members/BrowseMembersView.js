@@ -40,8 +40,8 @@ class BrowseMembersView {
     const robotThumbEl = createImg();
     robotThumbEl.src = thumbnailUrl;
     const titleName = createH3(title.name);
-    const NamePhraseEl = createP(name);
-    NamePhraseEl.classList.add('member-name');
+    const namePhraseEl = createP(name);
+    namePhraseEl.classList.add('member-name');
     const titleQuote = createH3(title.quote);
     const quotePhraseEl = createP(quote);
     quotePhraseEl.classList.add('member-text');
@@ -54,7 +54,7 @@ class BrowseMembersView {
     child.appendChild(imageBox);
     imageBox.appendChild(robotThumbEl);
     child.appendChild(titleName);
-    child.appendChild(NamePhraseEl);
+    child.appendChild(namePhraseEl);
     child.appendChild(titleQuote);
     child.appendChild(quotePhraseEl);
     parent.appendChild(nextButton);
