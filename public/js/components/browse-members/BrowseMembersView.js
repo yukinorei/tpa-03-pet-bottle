@@ -1,6 +1,12 @@
 import {
   removeChildren,
+  createButton,
+  createDiv,
+  createH3,
+  createImg,
+  createP,
 } from '../../dom-utils.js';
+import { title, next } from './constants.js';
 
 class BrowseMembersView {
   constructor() {
@@ -26,25 +32,32 @@ class BrowseMembersView {
 
     this.clearDom();
 
-    /*
-      TODO: 動的にDOM要素を作成して、
-      "#container"というidを持つDIV要素の子要素として追加してください...
-
-        <div class="member-profile">
-          <div class="member-image-box">
-            <img src="" alt="(会員のイメージ)">
-          </div>
-          <h3>名前</h3>
-          <p class="member-name">
-            <!-- 会員の名前、たとえば「じじー」-->
-          </p>
-          <h3>一言</h3>
-          <p class="member-text">
-            <!-- 会員の自己紹介 -->
-          </p>
-        </div>
-        <button class="btn-next-member">次へ</button>
-    */
+    const parent = document.getElementById('container');
+    const child = createDiv();
+    child.classList.add('member-profile');
+    const imageBox = createDiv();
+    imageBox.classList.add('member-image-box');
+    const robotThumbEl = createImg();
+    robotThumbEl.src = thumbnailUrl;
+    const titleName = createH3(title.name);
+    const namePhraseEl = createP(name);
+    namePhraseEl.classList.add('member-name');
+    const titleQuote = createH3(title.quote);
+    const quotePhraseEl = createP(quote);
+    quotePhraseEl.classList.add('member-text');
+    const nextButton = createButton(next);
+    nextButton.classList.add('btn-next-member');
+    nextButton.addEventListener('click', () => {
+      handleBrowseNextMember();
+    });
+    parent.appendChild(child);
+    child.appendChild(imageBox);
+    imageBox.appendChild(robotThumbEl);
+    child.appendChild(titleName);
+    child.appendChild(namePhraseEl);
+    child.appendChild(titleQuote);
+    child.appendChild(quotePhraseEl);
+    parent.appendChild(nextButton);
   }
 }
 
